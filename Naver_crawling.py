@@ -10,7 +10,7 @@ import csv
 
 from konlpy import jvm
 from konlpy.tag import Okt, Kkma, Komoran, Hannanum
-from wordcloud import WordCloud  # class import
+  # class import
 import matplotlib.pyplot as plt
 class NewsTitle:
 
@@ -101,34 +101,34 @@ class NewsTitle:
 
 #=========================================WordCloud=============================================
 
-class Wordcloud:
-    def get_title_wordcloud(self):  # wordcloud 만드는 함수
-        okt = Komoran()
-        word_dic = {} # dictionary
-        lines = [] # list
-        with open(time.strftime("./title_txtfile/news_titles_%y%b%d.txt"), 'r', encoding="utf-8") as raws:
-             reader = csv.reader(raws)
-             for raw in reader:
-                lines.append(raw)
-        for line in lines:
-             malist = okt.pos(' '.join(line))  # '구분자'.join(리스트)
-             for word in malist:
-                 print(word)  # [단어, 태그]
-                 if word[1] == 'NNG':
-                     if not(word[0] in word_dic):
-                           word_dic[word[0]] = 0   # [단어 : 0] => 저장
-                     word_dic[word[0]] += 1  # 단어(키)의 값 1증가
-        keys = sorted(word_dic.items(), key=lambda x:x[1], reverse=True)
-        # 50개까지 결과값을 출력
-        for word, count in keys[:50]:
-            print('{0}({1})'.format(word, count), end=', ')
-        wordcloud = WordCloud(font_path='malgun.ttf', background_color = 'white',width = 1000, height = 1000)\
-            .generate_from_frequencies(word_dic)
-        plt.figure(figsize=(10,10))
-        plt.imshow(wordcloud)
-        plt.axis("off")
-        plt.title(str(time.strftime("%y%b%d")), loc='right', fontsize=25)
-        plt.savefig(time.strftime("./title_pngfile/result_title_%y%b%d.png"))
+# class Wordcloud:
+#     def get_title_wordcloud(self):  # wordcloud 만드는 함수
+#         okt = Komoran()
+#         word_dic = {} # dictionary
+#         lines = [] # list
+#         with open(time.strftime("./title_txtfile/news_titles_%y%b%d.txt"), 'r', encoding="utf-8") as raws:
+#              reader = csv.reader(raws)
+#              for raw in reader:
+#                 lines.append(raw)
+#         for line in lines:
+#              malist = okt.pos(' '.join(line))  # '구분자'.join(리스트)
+#              for word in malist:
+#                  print(word)  # [단어, 태그]
+#                  if word[1] == 'NNG':
+#                      if not(word[0] in word_dic):
+#                            word_dic[word[0]] = 0   # [단어 : 0] => 저장
+#                      word_dic[word[0]] += 1  # 단어(키)의 값 1증가
+#         keys = sorted(word_dic.items(), key=lambda x:x[1], reverse=True)
+#         # 50개까지 결과값을 출력
+#         for word, count in keys[:50]:
+#             print('{0}({1})'.format(word, count), end=', ')
+#         wordcloud = WordCloud(font_path='malgun.ttf', background_color = 'white',width = 1000, height = 1000)\
+#             .generate_from_frequencies(word_dic)
+#         plt.figure(figsize=(10,10))
+#         plt.imshow(wordcloud)
+#         plt.axis("off")
+#         plt.title(str(time.strftime("%y%b%d")), loc='right', fontsize=25)
+#         plt.savefig(time.strftime("./title_pngfile/result_title_%y%b%d.png"))
         # plt.show()
 
 # word.get_title_wordcloud()
