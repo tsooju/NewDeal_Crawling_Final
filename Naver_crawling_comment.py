@@ -90,7 +90,7 @@ class NewsComment:
 
                     #=======================Insert DB=======================
 
-                    conn = ora.connect(user="admin", password="Amjilt39260193", dsn="gtsoojdb_high")
+                    conn = ora.connect(user="admin", password="....", dsn="....jdb_high")
                     cursor = conn.cursor()
                     cursor.execute('insert into news_comment_final (create_date, name, link, title, content) values(sysdate, :2, :3, :4, :5)', (str(press_title), str(link), str(title), str(content)))
                     cursor.close()
